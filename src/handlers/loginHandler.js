@@ -15,12 +15,12 @@ const getUser = async (req, res) => {
 		}
 
 		if (findUser && findUser.password === password) {
-			res.status(200).json(findUser)
+			return res.status(200).json(findUser)
 		} else {
-			res.status(404).json({ message: "Contraseña Incorrecta" })
+			return res.status(404).json({ message: "Contraseña Incorrecta" })
 		}
 	} catch (error) {
-		res.status(500).json({ error: error.message })
+		return res.status(500).json({ error: error.message })
 	}
 }
 

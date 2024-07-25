@@ -7,15 +7,21 @@ const createUser = async (name, username, mail, password) => {
 }
 
 const findUserByMail = async (mail) => {
-	const user = User.findOne({ where: { mail: mail } })
+	const user = await User.findOne({ where: { mail: mail } })
 
 	return user
 }
 
 const findUserByUsername = async (username) => {
-	const user = User.findOne({ where: { username: username } })
+	const user = await User.findOne({ where: { username: username } })
 
 	return user
 }
 
-module.exports = { createUser, findUserByMail, findUserByUsername }
+const allUsers = async () => {
+	const users = await User.findAll()
+
+	return users
+}
+
+module.exports = { createUser, findUserByMail, findUserByUsername, allUsers }
